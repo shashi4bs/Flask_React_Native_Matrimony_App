@@ -1,0 +1,17 @@
+<html>
+        <head>
+                {% if title %}
+                <title>{{title}} - Matrimony</title>
+                {% else %}
+                <title>untitled</title>
+                {% endif %}
+                <!-- CSS -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <!--Bootstrap Core JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+        <body style="margin-top: 50px">
+		{% block navigationbar %}{% endblock %}
+		{% block content %}{% endblock %}
+	</body>
+</html>

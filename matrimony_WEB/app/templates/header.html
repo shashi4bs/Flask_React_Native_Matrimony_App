@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block navigationbar %}
+<div class="navbar navbar-fixed-top">
+        <div class="container">
+               	<div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" datatarget="#myNavbar">
+                               	<span class="icon-bar"></span>
+                               	<span class="icon-bar"></span>
+                               	<span class="icon-bar"></span>
+                       	</button>
+                       	<a class="navbar-brand" href="/index">Bharat Matrimony</a>
+               	</div>
+		<div class="collapse navbar-collapse" id="mynavbar">
+		{% if current_user.is_anonymous %}
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href={{ url_for('register')}}><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+				<li><a href={{ url_for('login') }}><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		{% else %}
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href={{ url_for('prefrences') }}><span class="glyphicon glyphicon-book"></span>  Prefrences</a></li>
+				<li><a href={{ url_for('profile') }}><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+				<li><a href={{ url_for('logout') }}><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+		{% endif %}
+		</div>
+       	</div>
+</div>
+
+{% endblock %}        

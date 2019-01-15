@@ -1,0 +1,14 @@
+{% extends "header.html" %}
+
+{% block content %}
+{% for i in range(match.shape[0]) %}
+        {% if match.iloc[i,0] == "F"%}
+		<h2>She is</h2>
+	{% else %}
+		<h2>He is</h2>
+	{% endif %}
+		
+	<h2> {{ match.iloc[i,1] }} years old, height : {{ match.iloc[i,2] }}, {{match.iloc[i,2]}}, {{ match.iloc[i,3] }}, {{ match.iloc[i,4] }}, {{ match.iloc[i,5] }},{{ match.iloc[i,6] }},{{ match.iloc[i,7] }},{{ match.iloc[i,8] }},{{ match.iloc[i,9] }},{{ match.iloc[i,9] }},{{ match.iloc[i,10] }}, {{ match.iloc[i,11] }},{{ match.iloc[i,12] }} 
+{% endfor %}
+	
+{% endblock %}

@@ -1,0 +1,8 @@
+matrimony_labelled_data.csv : data collected from about 250 people;
+data was processed to get relevent attributes;
+processed data then grouped into 8 clusters defining 8 different class of people;
+
+clustering algorithm: K-MEANS
+refer:
+->https://en.wikipedia.org/wiki/K-means_clustering
+->https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html  
