@@ -1,0 +1,7 @@
+#for Matrimony WEB
+Setup virtual Environment
+cd Matrimony_WEB
+
+
+pip install flask
+pip install 
