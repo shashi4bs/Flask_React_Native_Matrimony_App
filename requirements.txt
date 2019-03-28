@@ -1,7 +1,12 @@
 #for Matrimony WEB
 Setup virtual Environment
+->$python3 -m venv venv
+->$source venv/bin/activate
 cd Matrimony_WEB
 
 
 pip install flask
-pip install 
+pip install flask-wtf
+pip install flask-sqlalchemy
+pip install flask-migrate
+pip install flask-login
