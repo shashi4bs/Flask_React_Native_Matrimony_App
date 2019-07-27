@@ -7,10 +7,10 @@ This page contains server implementation for both Web and Native Api call
 #--------------------------------------------------------------------WEB_API------------------------------------------------------------------#
 
 from app import App, db
-from flask import render_template, url_for, redirect, jsonify, request
+from flask import render_template, url_for, redirect, jsonify, request, flash
 from app.forms import LoginForm, SignupForm, ProfileForm, PrefrencesForm
 from app.models import Authorization, Users, User_Prefrences
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from decision_tree.model import get_match
 
 @App.route('/')
@@ -47,7 +47,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user)
-        return redirect(url_for('index'))
+        return redirect(url_for('user'))
     return render_template('login.html', title='Login',form=form)
 
 @App.route('/logout')
@@ -55,6 +55,14 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@App.route('/user')
+def user():
+    user = current_user
+    user = Users.query.filter_by(Authorization=user).first()
+    print(user)
+    return render_template('user.html', title='user', user = user)
+
+@login_required
 @App.route('/profile', methods=['GET','POST'])
 def profile():
     form = ProfileForm()
@@ -80,7 +88,7 @@ def profile():
         prefrences = User_Prefrences(Users=info)
         db.session.add(prefrences)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('user'))
     return render_template('profile.html', title='Profile', form=form)
 
 
@@ -101,7 +109,7 @@ def prefrences():
         prefrences.Skin_Tone = form.Skin_Tone.data
         prefrences.Build = form.Build.data
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('user'))
     return render_template('prefrences.html', title='Prefrences', form=form)
 
 

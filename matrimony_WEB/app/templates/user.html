@@ -1,0 +1,40 @@
+{% extends "header.html" %}
+
+{% block content %}
+<style>
+
+body{
+    background-image:url({{url_for('static', filename='img/user.jpg')}});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.button{
+    background-color: #e7e7e7; /* Green */
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    border-radius: 12px;
+    display: inline-block;
+    font-size: 16px;
+
+}
+.text{
+    color:white;
+}
+
+</style>
+    <div class="row container text">
+	<div class="col-md-3 col-md-offset-1">
+        {% if user.First_Name %}
+        Name: {{user.First_Name}}  {{user.Last_Name}}<br>
+
+		<div class="container" style="margin-top:100px" >
+			<a href={{ url_for('find_match') }}> Find Match</a>
+		</div>
+                
+                <a href={{url_for('profile')}}><button class="button"> Edit Profile </button></a>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %} 
